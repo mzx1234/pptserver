@@ -93,6 +93,21 @@
       </exclusions>
     </dependency>
 
+    <!--poi-->
+    <!--<dependency>-->
+      <!--<groupId>org.apache.poi</groupId>-->
+      <!--<artifactId>poi</artifactId>-->
+      <!--<version>3.13</version>-->
+    <!--</dependency>-->
+
+    <!-- test -->
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>${testng.version}</version>
+      <scope>test</scope>
+    </dependency>
+
 
   </dependencies>
 

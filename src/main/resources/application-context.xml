@@ -26,13 +26,13 @@
     </bean>
 
     <import resource="application-datasource.xml"/>
-
+    <import resource="poi.xml"/>
 
 
     <!-- mybatis 集成 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="mapperLocations" value="sqlmappings/*.xml"/>
+        <!--<property name="mapperLocations" value="sqlmappings/*.xml"/>-->
     </bean>
 
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
