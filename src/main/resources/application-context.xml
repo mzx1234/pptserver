@@ -21,12 +21,14 @@
                 <value>properties/mq.properties</value>
                 <value>properties/thrift.properties</value>
                 <value>properties/common.properties</value>
+                <value>properties/redis.properties</value>
             </list>
         </property>
     </bean>
 
     <import resource="application-datasource.xml"/>
     <import resource="poi.xml"/>
+    <import resource="redis.xml"/>
 
 
     <!-- mybatis 集成 -->
