@@ -65,12 +65,12 @@ public class RedisUtil {
 
 	public static void main(String[] args) {
 		RedisUtil redis = new RedisUtil();
-		redis.createPool("121.199.1.80");
+		redis.createPool("192.168.252.3");
 		try {
-//			redis.setObject("test_cfg_0001", "cfg_0001");
-//			redis.setObject("test_cfg_0002", "cfg_0002");
-//			System.out.println(redis.getObject("test_cfg_0001"));
-//			System.out.println(redis.getObject("test_cfg_0002"));
+			redis.setObject("test_cfg_0001", "cfg_0001");
+			redis.setObject("test_cfg_0002", "cfg_0002");
+			System.out.println(redis.getObject("test_cfg_0001"));
+			System.out.println(redis.getObject("test_cfg_0002"));
 //			redis.delKeysLike("est_cfg_");
 //			System.out.println(redis.getObject("test_cfg_0001"));
 //			System.out.println(redis.getObject("test_cfg_0002"));

@@ -66,17 +66,18 @@ public class POIParse {
                 break;
         }
 
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-
-        try {
-            javax.imageio.ImageIO.write(img, "jpg", out);
-            out.close();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        return  out.toByteArray();
+//        ByteArrayOutputStream out = new ByteArrayOutputStream();
+//
+//        try {
+//            javax.imageio.ImageIO.write(img, "jpg", out);
+//            out.close();
+//        } catch (IOException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
+//
+//        return  out.toByteArray();
+        return SerializeUtil.serialize(img);
     }
 
 
