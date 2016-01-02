@@ -11,11 +11,10 @@ import org.apache.poi.xslf.usermodel.XSLFSlide;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.List;
 
+import com.gdut.pptserver.constant.PptTypeConstant.PPTType;
 
 /**
  * POI解析工具类
@@ -81,27 +80,6 @@ public class POIParse {
     }
 
 
-    public enum PPTType {
-        PPTX(1,"PPTX 文件"),
-        PPT(2, "PPT 文件");
 
-        int pptType;
-        String des;
-
-        PPTType(int i, String s) {
-            this.pptType = i;
-            this.des = s;
-        }
-
-
-        public int getPptType() {
-            return pptType;
-        }
-
-        public String getDes() {
-            return des;
-        }
-
-    }
 
 }
