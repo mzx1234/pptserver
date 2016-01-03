@@ -400,7 +400,6 @@ public abstract class StringUtils {
      * 目前仅支持String、Collection、Map，其他类型仅判断是否为null
      * @param obj
      * @return 对象是否为空，空则返回true
-     * @author 徐新明
      */
     public static boolean isEmpty(Object obj){
     	boolean result = true;

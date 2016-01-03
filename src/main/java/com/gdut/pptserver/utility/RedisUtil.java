@@ -88,8 +88,6 @@ public class RedisUtil {
 	/**
 	 * 
 	 * 描 叙: 开启redis服务，创建redis连接池
-	 * <p>
-	 * 作 者: 徐新明<br>
 	 * 时 间: Aug 2, 2014 1:25:07 PM
 	 *//*
 	public void startRedis(RedisStartParaBean para) throws Exception {
@@ -111,8 +109,6 @@ public class RedisUtil {
 	/**
 	 * 
 	 * 描 叙: 创建REDIS资源池
-	 * <p>
-	 * 作 者: 徐新明<br>
 	 * 时 间: 2014-1-8 下午02:52:53
 	 */
 	public void createPool(String ip) {
@@ -125,8 +121,6 @@ public class RedisUtil {
 	/**
 	 * 
 	 * 描 叙: 创建REDIS资源池
-	 * <p>
-	 * 作 者: 徐新明<br>
 	 * 时 间: 2014-1-8 下午02:52:57
 	 */
 	public void createPool(String ip, int port) {
@@ -139,8 +133,6 @@ public class RedisUtil {
 	/**
 	 * 
 	 * 描 叙: 创建REDIS资源池
-	 * <p>
-	 * 作 者: 徐新明<br>
 	 * 时 间: 2014-1-24 下午02:52:57
 	 */
 	public void createPool(String ip, int port, String password) {
@@ -153,8 +145,6 @@ public class RedisUtil {
 	/**
 	 * 
 	 * 描 叙: 销毁REDIS资源池
-	 * <p>
-	 * 作 者: 徐新明<br>
 	 * 时 间: 2014-1-8 下午05:02:16
 	 */
 	public static void destoryPool() {
@@ -166,8 +156,6 @@ public class RedisUtil {
 	/**
 	 * 
 	 * 描 叙: 获取REDIS连接，并在redis从服务异常转为正常时清空redis
-	 * <p>
-	 * 作 者: 徐新明<br>
 	 * 时 间: 2014-1-8 下午02:55:46
 	 */
 	public Jedis getRedisConn() throws Exception {
@@ -196,8 +184,6 @@ public class RedisUtil {
 	/**
 	 * 
 	 * 描 叙: 获取redis中key对应的value
-	 * <p>
-	 * 作 者: 徐新明<br>
 	 * 时 间: 2014-1-8 下午05:28:56
 	 */
 	public String get(String key) {
@@ -217,8 +203,6 @@ public class RedisUtil {
 	/**
 	 * 
 	 * 描 叙: 根据正则匹配获取一个set集合的值
-	 * <p>
-	 * 作 者: 徐新明<br>
 	 * 时 间: Jul 31, 2014 10:53:50 AM
 	 */
 	public Set<String> getByPattern(String pattern) {
@@ -239,7 +223,6 @@ public class RedisUtil {
 	 * 
 	 * 描 叙: 写redis
 	 * <p>
-	 * 作 者: 徐新明<br>
 	 * 时 间: 2014-1-8 下午05:28:56
 	 */
 	public boolean set(String key, String value) {
@@ -266,7 +249,6 @@ public class RedisUtil {
 	 * 
 	 * 描 叙: 根据key值获取T类型对象 通过将对象转json字符串格式存储读取
 	 * <p>
-	 * 作 者: 徐新明<br>
 	 * 时 间: Aug 1, 2014 3:36:06 PM
 	 */
 	@SuppressWarnings("rawtypes")
@@ -288,7 +270,6 @@ public class RedisUtil {
 	 * 
 	 * 描 叙: 根据key值获取T类型对象集合 通过将对象转json字符串格式存储读取
 	 * <p>
-	 * 作 者: 徐新明<br>
 	 * 时 间: Aug 1, 2014 3:36:06 PM
 	 */
 	@SuppressWarnings("rawtypes")
@@ -310,8 +291,6 @@ public class RedisUtil {
 	/**
 	 * 
 	 * 描 叙: 写对象 通过将对象转json字符串格式存储读取
-	 * <p>
-	 * 作 者: 徐新明<br>
 	 * 时 间: Aug 1, 2014 2:16:38 PM
 	 */
 	public boolean setByJson(String key, Object value) {
@@ -348,8 +327,6 @@ public class RedisUtil {
 	/**
 	 * 
 	 * 描 叙: 获取序列化存储的对象
-	 * <p>
-	 * 作 者: 徐新明<br>
 	 * 时 间: Aug 2, 2014 11:03:24 AM
 	 */
 	public Object getObject(String key) {
@@ -369,8 +346,6 @@ public class RedisUtil {
 	/**
 	 * 
 	 * 描 叙: 存储序列化的对象
-	 * <p>
-	 * 作 者: 徐新明<br>
 	 * 时 间: Aug 2, 2014 11:05:11 AM
 	 */
 	public boolean setObject(String key, Object value) {
@@ -399,8 +374,6 @@ public class RedisUtil {
 	 * 描  叙: 左边插入队列(the head (LPUSH) of the list)
 	 * key:队列的key值
 	 * value:队列的value
-	 * <p>
-	 * 作  者: 胡吉方<br>
 	 * 时  间: 2014-12-1 下午3:03:33
 	 */
 	public long lPushString(String key,String value){
@@ -421,8 +394,6 @@ public class RedisUtil {
 	 * 
 	 * 描  叙: 右边出队列(the tail (RPUSH) of the list)
 	 * key:队列的key值
-	 * <p>
-	 * 作  者: 胡吉方<br>
 	 * 时  间: 2014-12-1 下午3:04:31
 	 */
 	public String rPopString(String key){
@@ -445,7 +416,6 @@ public class RedisUtil {
 	 * timeout 超时时间，超出超时时间返回null
 	 * key:队列的key值
 	 * <p>
-	 * 作  者: 胡吉方<br>
 	 * 时  间: 2014-12-1 下午3:04:59
 	 */
 	public String bRPopString(int timeout,String key){
@@ -468,7 +438,6 @@ public class RedisUtil {
 	 * 描  叙: 从左边开始获取队列别表
 	 * key:队列的key值
 	 * <p>
-	 * 作  者: 胡吉方<br>
 	 * 时  间: 2014-12-1 下午3:05:28
 	 */
 	public List<String> lRangeStringList(String key){
@@ -492,7 +461,6 @@ public class RedisUtil {
 	 * index:索引值
 	 * value:重置后的值
 	 * <p>
-	 * 作  者: 胡吉方<br>
 	 * 时  间: 2014-12-1 下午3:06:06
 	 */
 	public String lSetString(String key,int index,String value){
@@ -515,7 +483,6 @@ public class RedisUtil {
 	 * key:队列的key值
 	 * index:索引值
 	 * <p>
-	 * 作  者: 胡吉方<br>
 	 * 时  间: 2014-12-1 下午3:06:26
 	 */
 	public String lIndexString(String key,int index){
@@ -537,7 +504,6 @@ public class RedisUtil {
 	 * 描  叙: 获取队列长度
 	 * key:队列的key值
 	 * <p>
-	 * 作  者: 胡吉方<br>
 	 * 时  间: 2014-12-1 下午3:06:50
 	 */
 	public long lLengthString(String key){
@@ -558,7 +524,6 @@ public class RedisUtil {
 	 * 
 	 * 描  叙: 把队列某个值移除，count是移除的个数，比如队列可能有重复的数据
 	 * <p>
-	 * 作  者: 胡吉方<br>
 	 * 时  间: 2014-12-1 下午3:07:04
 	 */
 	public long lRemoveString(String key,int count,String value){
@@ -608,7 +573,6 @@ public class RedisUtil {
 	 * 
 	 * 描  叙: hash设置key的field域值为value
 	 * <p>
-	 * 作  者: 胡吉方<br>
 	 * 时  间: 2014-12-8 下午12:56:45
 	 */
 	public long hSetObject(String key,String field,Object value){
@@ -627,8 +591,7 @@ public class RedisUtil {
 	/**
 	 * 
 	 * 描  叙: hash获取key的field域值
-	 * <p>
-	 * 作  者: 胡吉方<br>
+
 	 * 时  间: 2014-12-8 下午3:02:39
 	 */
 	public Object hGetObject(String key,String field){
@@ -669,8 +632,7 @@ public class RedisUtil {
 	/**
 	 * 
 	 * 描  叙: 删除key的field域
-	 * <p>
-	 * 作  者: 胡吉方<br>
+
 	 * 时  间: 2014-12-8 下午1:01:22
 	 */
 	public long hDelObject(String key,String field){
@@ -692,8 +654,6 @@ public class RedisUtil {
 	/**
 	 * 
 	 * 描 叙: 保存redis中数据到文件(此方法可以不显式调用，因为redis服务器有自动的保存数据策略)
-	 * <p>
-	 * 作 者: 徐新明<br>
 	 * 时 间: 2014-1-8 下午05:28:56
 	 */
 	public boolean save() {
@@ -716,7 +676,6 @@ public class RedisUtil {
 	 * 
 	 * 描 叙: 将当前所有redis中数据清理掉
 	 * <p>
-	 * 作 者: 徐新明<br>
 	 * 时 间: Aug 2, 2014 1:09:27 PM
 	 */
 	private static boolean clearRedis(Jedis conn) {
@@ -754,7 +713,6 @@ public class RedisUtil {
 	 * 
 	 * 描 叙: 根据正则匹配删除所有匹配的key
 	 * <p>
-	 * 作 者: 徐新明<br>
 	 * 时 间: Aug 6, 2014 10:17:34 AM
 	 */
 	public boolean delByPattern(String pattern) {
@@ -812,7 +770,6 @@ public class RedisUtil {
 	 * 
 	 * 描 叙: 获取redis中数据量
 	 * <p>
-	 * 作 者: 徐新明<br>
 	 * 时 间: 2014-1-8 下午05:28:56
 	 */
 	public long size() {
@@ -832,8 +789,6 @@ public class RedisUtil {
 	/**
 	 * 
 	 * 描 叙: 归还使用完毕的redis连接
-	 * <p>
-	 * 作 者: 徐新明<br>
 	 * 时 间: 2014-1-8 下午05:19:56
 	 */
 	public void returnRedisConn(Jedis jedis) {
@@ -845,8 +800,6 @@ public class RedisUtil {
 	/**
 	 * 
 	 * 描 叙: 归还异常的redis连接
-	 * <p>
-	 * 作 者: 徐新明<br>
 	 * 时 间: 2014-1-8 下午05:19:56
 	 */
 	public void returnBrokenRedisConn(Jedis jedis) {
@@ -858,8 +811,6 @@ public class RedisUtil {
 	/**
 	 * 
 	 * 描  叙: 清空缓存
-	 * <p>
-	 * 作  者: 徐新明<br>
 	 * 时  间: Aug 6, 2014 3:30:49 PM
 	 */
 	public boolean clearAllCache() throws Exception{
