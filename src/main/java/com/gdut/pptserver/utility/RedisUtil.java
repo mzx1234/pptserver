@@ -1,5 +1,6 @@
 package com.gdut.pptserver.utility;
 
+import java.awt.image.BufferedImage;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -29,7 +30,9 @@ public class RedisUtil {
 	 * 全局清理时的正则，为空时删除所有数据
 	 */
 	private static String CLEAR_PATTERN = "";
-	
+	private String key;
+	private String field;
+
 	public void setREDIS_POOL(JedisPool rEDIS_POOL) {
 		REDIS_POOL = rEDIS_POOL;
 	}
@@ -71,6 +74,8 @@ public class RedisUtil {
 			redis.setObject("test_cfg_0002", "cfg_0002");
 			System.out.println(redis.getObject("test_cfg_0001"));
 			System.out.println(redis.getObject("test_cfg_0002"));
+			System.out.println(redis.hGetBytes("hh","color"));
+
 //			redis.delKeysLike("est_cfg_");
 //			System.out.println(redis.getObject("test_cfg_0001"));
 //			System.out.println(redis.getObject("test_cfg_0002"));
@@ -495,7 +500,7 @@ public class RedisUtil {
 		Jedis conn = null;
 		try {
 			conn = getRedisConn();
-			result=conn.lset(key, index,value);
+			result=conn.lset(key, index, value);
 		} catch (Exception ex) {
 			returnBrokenRedisConn(conn);
 		} finally {
@@ -561,7 +566,7 @@ public class RedisUtil {
 		Jedis conn = null;
 		try {
 			conn = getRedisConn();
-			result=conn.lrem(key,count,value);
+			result=conn.lrem(key, count, value);
 		} catch (Exception ex) {
 			returnBrokenRedisConn(conn);
 		} finally {
@@ -575,7 +580,7 @@ public class RedisUtil {
 		Long result = null;
 		try {
 			conn = getRedisConn();
-			result=conn.lpush(key.getBytes(),SerializeUtil.serialize(value));
+			result=conn.lpush(key.getBytes(), SerializeUtil.serialize(value));
 		} catch (Exception ex) {
 			returnBrokenRedisConn(conn);
 		} finally {
@@ -611,7 +616,7 @@ public class RedisUtil {
 		Jedis conn = null;
 		try {
 			conn = getRedisConn();
-			result=conn.hset(key.getBytes(),field.getBytes(),SerializeUtil.serialize(value));
+			result=conn.hset(key.getBytes(), field.getBytes(), SerializeUtil.serializeImg((BufferedImage) value));
 		} catch (Exception ex) {
 			returnBrokenRedisConn(conn);
 		} finally {
@@ -631,7 +636,28 @@ public class RedisUtil {
 		Jedis conn = null;
 		try {
 			conn = getRedisConn();
-			result=SerializeUtil.unserialize(conn.hget(key.getBytes(),field.getBytes()));
+			result=SerializeUtil.unserialize(conn.hget(key.getBytes(), field.getBytes()));
+		} catch (Exception ex) {
+			returnBrokenRedisConn(conn);
+		} finally {
+			returnRedisConn(conn);
+		}
+		return result;
+	}
+
+
+	/**
+	 * hash获取key的field域值
+	 * @param key
+	 * @param field
+	 * @return
+	 */
+	public byte[] hGetBytes(String key,String field) {
+		byte[] result = null;
+		Jedis conn = null;
+		try {
+			conn = getRedisConn();
+			result = conn.hget(key.getBytes(), field.getBytes());
 		} catch (Exception ex) {
 			returnBrokenRedisConn(conn);
 		} finally {

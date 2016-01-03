@@ -14,8 +14,8 @@ public interface ParseService {
      * @param file 文件路径
      * @throws ServiceException
      */
-    void parsePPTFile(String file) throws ServiceException;
+    byte[] parsePPTFile(String file) throws ServiceException;
 
 
-    void parsePPTXFile(String file) throws ServiceException;
+    byte[] parsePPTXFile(String file) throws ServiceException;
 }

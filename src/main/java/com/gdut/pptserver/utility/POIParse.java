@@ -2,6 +2,7 @@ package com.gdut.pptserver.utility;
 
 
 
+import com.gdut.pptserver.application.GlobalApplication;
 import org.apache.poi.hslf.usermodel.HSLFSlide;
 import org.apache.poi.hslf.usermodel.HSLFSlideShow;
 import org.apache.poi.hslf.usermodel.HSLFSlideShowImpl;
@@ -15,6 +16,7 @@ import java.io.FileInputStream;
 import java.util.List;
 
 import com.gdut.pptserver.constant.PptTypeConstant.PPTType;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * POI解析工具类
@@ -27,27 +29,36 @@ public class POIParse {
     List<HSLFSlide> pptSlideList;
     List<XSLFSlide> pptxSlideList;
     private Dimension pgsize = null;
+    private int len;
+
 
     private PPTType pptType ;
 
+    @Autowired
+    private GlobalApplication globalApplication;
+    @Autowired
+    private RedisUtil redisUtil;
 
 
-    public  void getPPTSlides(String file) throws Exception{
+
+    private  void getPPTSlides(String file) throws Exception{
         HSLFSlideShow pptSlideShow = new HSLFSlideShow(new HSLFSlideShowImpl(file));
         pgsize = pptSlideShow.getPageSize();
         pptSlideList = pptSlideShow.getSlides();
         pptType = PPTType.PPT;
+        len = pptSlideList.size();
     }
 
 
-    public void getPPTXSlides(String file) throws Exception{
+    private void getPPTXSlides(String file) throws Exception{
         XMLSlideShow pptxSlideShow = new XMLSlideShow(new FileInputStream(file));
         pgsize = pptxSlideShow.getPageSize();
         pptxSlideList = pptxSlideShow.getSlides();
         pptType = PPTType.PPTX;
+        len = pptxSlideList.size();
     }
 
-    public byte[] getImageBuffer(int cur) {
+    private BufferedImage getImag(int cur) {
         BufferedImage img = new BufferedImage(pgsize.width, pgsize.height,
                 BufferedImage.TYPE_INT_RGB);
         Graphics2D jpgGraphics = img.createGraphics();
@@ -64,19 +75,52 @@ public class POIParse {
                 pptxSlideList.get(cur).draw(jpgGraphics);
                 break;
         }
+        return img;
+    }
 
-//        ByteArrayOutputStream out = new ByteArrayOutputStream();
-//
-//        try {
-//            javax.imageio.ImageIO.write(img, "jpg", out);
-//            out.close();
-//        } catch (IOException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
-//
-//        return  out.toByteArray();
-        return SerializeUtil.serialize(img);
+
+    private void toRedis() {
+        for(int cur = 0; cur < globalApplication.getLen(); cur++) {
+            BufferedImage img = getImag(cur);
+            redisUtil.hSetObject(globalApplication.getKey(), cur+"", img);
+        }
+    }
+
+    private byte[] getFromRedis(String file) {
+        innitGlobal(file);
+        return redisUtil.hGetBytes(globalApplication.getKey(), "0");
+    }
+
+
+    public byte[] parsePPTAndGetFirst(String file) throws Exception{
+        byte[] result = getFromRedis(file);
+        if(result != null) {
+            return result;
+        }
+        getPPTSlides(file);
+        globalApplication.setLen(len);
+        toRedis();
+        return redisUtil.hGetBytes(globalApplication.getKey(), "0");
+    }
+
+    public byte[] parsePPTXAndGetFirst(String file) throws Exception{
+        byte[] result = getFromRedis(file);
+        if(result != null) {
+            return result;
+        }
+        getPPTXSlides(file);
+        innitGlobal(file);
+        toRedis();
+        return redisUtil.hGetBytes(globalApplication.getKey(), "0");
+    }
+
+
+    private void innitGlobal(String file) {
+        globalApplication.setPath(file);
+        globalApplication.setFileName(file);
+        globalApplication.setCurPage(0);
+        globalApplication.setKey(globalApplication.getFileName());
+        globalApplication.setLen(len);
     }
 
 

@@ -17,24 +17,23 @@ public class ParseServiceImpl implements ParseService {
     private POIParse poiParse;
 
     @Override
-    public void parsePPTFile(String file) throws ServiceException {
+    public byte[] parsePPTFile(String file) throws ServiceException {
         try {
-            poiParse.getPPTSlides(file);
+            return poiParse.parsePPTAndGetFirst(file);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        poiParse.getImageBuffer(0);
+        return null;
     }
 
     @Override
-    public void parsePPTXFile(String file) throws ServiceException {
+    public byte[] parsePPTXFile(String file) throws ServiceException {
         try {
-            poiParse.getPPTXSlides(file);
+            return poiParse.parsePPTXAndGetFirst(file);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        poiParse.getImageBuffer(0);
+        return null;
     }
+
 }
