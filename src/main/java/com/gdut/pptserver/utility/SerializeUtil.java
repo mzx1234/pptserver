@@ -1,9 +1,7 @@
 package com.gdut.pptserver.utility;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.awt.image.BufferedImage;
+import java.io.*;
 
 /**
  * 描 叙：对象序列化工具类
@@ -44,5 +42,29 @@ public class SerializeUtil {
 			}
 		}
 		return null;
+	}
+
+	public static byte[] serializeImg(BufferedImage img) {
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		try {
+			javax.imageio.ImageIO.write(img, "jpg", out);
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return out.toByteArray();
+	}
+
+
+	public static BufferedImage unserializeImg(byte[] bytes) {
+		ByteArrayInputStream in = new ByteArrayInputStream(bytes);
+		BufferedImage image = null;
+		try {
+			image = javax.imageio.ImageIO.read(in);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return image;
 	}
 }
