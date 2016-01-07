@@ -8,12 +8,13 @@ import org.apache.poi.hslf.usermodel.HSLFSlideShow;
 import org.apache.poi.hslf.usermodel.HSLFSlideShowImpl;
 import org.apache.poi.xslf.usermodel.XMLSlideShow;
 import org.apache.poi.xslf.usermodel.XSLFSlide;
-
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.util.List;
+
+import com.gdut.pptserver.thrift.struct.CommonStructConstants;
 
 import com.gdut.pptserver.constant.PptTypeConstant.PPTType;
 import org.springframework.beans.factory.annotation.Autowired;

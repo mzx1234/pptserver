@@ -43,6 +43,7 @@
       <version>1.1.3</version>
     </dependency>
 
+
     <!-- 数据库 依赖 -->
     <dependency>
       <groupId>commons-dbcp</groupId>
@@ -94,11 +95,17 @@
     </dependency>
 
     <!--poi-->
-    <!--<dependency>-->
-      <!--<groupId>org.apache.poi</groupId>-->
-      <!--<artifactId>poi</artifactId>-->
-      <!--<version>3.13</version>-->
-    <!--</dependency>-->
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>3.13</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-scratchpad</artifactId>
+      <version>3.13</version>
+    </dependency>
 
     <!-- test -->
     <dependency>
@@ -146,41 +153,41 @@
         </configuration>
       </plugin>
 
-      <!--mybatis generator 插件-->
-      <plugin>
-        <groupId>org.mybatis.generator</groupId>
-        <artifactId>mybatis-generator-maven-plugin</artifactId>
-        <version>1.3.1</version>
-        <configuration>
-          <verbose>true</verbose>
-          <overwrite>true</overwrite>
-        </configuration>
-        <dependencies>
-          <!-- 数据库驱动  -->
-          <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.8</version>
-          </dependency>
-        </dependencies>
-        <!-- 自动生成 -->
-        <executions>
-          <execution>
-            <id>Generate MyBatis Artifacts</id>
-            <goals>
-              <goal>generate</goal>
-            </goals>
-            <configuration>
-              <configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
-              <overwrite>true</overwrite>
-              <jdbcDriver>com.mysql.jdbc.Driver</jdbcDriver>
-              <jdbcURL>jdbc:mysql://localhost:3306/generator</jdbcURL>
-              <jdbcUserId>root</jdbcUserId>
-              <jdbcPassword></jdbcPassword>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+      <!--&lt;!&ndash;mybatis generator 插件&ndash;&gt;-->
+      <!--<plugin>-->
+        <!--<groupId>org.mybatis.generator</groupId>-->
+        <!--<artifactId>mybatis-generator-maven-plugin</artifactId>-->
+        <!--<version>1.3.1</version>-->
+        <!--<configuration>-->
+          <!--<verbose>true</verbose>-->
+          <!--<overwrite>true</overwrite>-->
+        <!--</configuration>-->
+        <!--<dependencies>-->
+          <!--&lt;!&ndash; 数据库驱动  &ndash;&gt;-->
+          <!--<dependency>-->
+            <!--<groupId>mysql</groupId>-->
+            <!--<artifactId>mysql-connector-java</artifactId>-->
+            <!--<version>5.1.8</version>-->
+          <!--</dependency>-->
+        <!--</dependencies>-->
+        <!--&lt;!&ndash; 自动生成 &ndash;&gt;-->
+        <!--<executions>-->
+          <!--<execution>-->
+            <!--<id>Generate MyBatis Artifacts</id>-->
+            <!--<goals>-->
+              <!--<goal>generate</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+              <!--<configurationFile>src/main/resources/generatorConfig.xml</configurationFile>-->
+              <!--<overwrite>true</overwrite>-->
+              <!--<jdbcDriver>com.mysql.jdbc.Driver</jdbcDriver>-->
+              <!--<jdbcURL>jdbc:mysql://localhost:3306/generator</jdbcURL>-->
+              <!--<jdbcUserId>root</jdbcUserId>-->
+              <!--<jdbcPassword></jdbcPassword>-->
+            <!--</configuration>-->
+          <!--</execution>-->
+        <!--</executions>-->
+      <!--</plugin>-->
 
 
       <!---thrift 打包插件-->
@@ -189,8 +196,8 @@
         <artifactId>maven-thrift-plugin</artifactId>
         <version>${maven.thrift.plugin.version}</version>
         <configuration>
-          <thriftExecutable>thrift</thriftExecutable>
-          <!--<thriftExecutable>D:\devsoft\thrift.exe</thriftExecutable>-->
+          <!--<thriftExecutable>thrift</thriftExecutable>-->
+          <thriftExecutable>D:\software\thrift\thrift.exe</thriftExecutable>
         </configuration>
         <executions>
           <execution>

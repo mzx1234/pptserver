@@ -31,7 +31,7 @@ const string RES_SUCCESS_CODE = "00000";
 
     #相应体通用结构
 	struct TResponseStatusStruct {
-	    # 交易渠道(001-滚雪球,002-金斧子APP, 003-金斧子官网)
+	    # 交易渠道(001-,002-, 003-)
 	    1: string channel;
 	    # 响应码 ，00000表示交易成功，默认值交易成功
 	    2: string code = RES_SUCCESS_CODE;
